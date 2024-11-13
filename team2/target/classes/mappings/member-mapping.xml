@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ict.MemberMapper">
+
+	<!-- 오라클 emp 테이블 연동 -->
+	<!-- Member테이블 member insert -->
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT INTO MEMBER(USERID, USERPASS, USERNAME)
+		VALUES(	#{userid}, #{userpass}, #{username} )
+	</insert>
+	<!-- 숫자는 ${}, 문자는 #{} -->
+
+	<!-- Member테이블 userid 로 update -->	
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE MEMBER SET
+		USERNAME = #{username}
+		WHERE USERID = #{userid}
+	</update>
+
+	<!-- Member테이블에서 member delete -->
+	<delete id="deleteMember" parameterType="MemberVO">
+		DELETE FROM MEMBER
+		WHERE USERID = #{userid}
+	</delete>
+
+	<!-- Member테이블의 userid로 검색 -->
+	<select id="getMember" parameterType="int" resultType="MemberVO">
+		SELECT *
+		FROM MEMBER
+		WHERE USERID = #{userid}
+	</select>
+
+	<!-- Member테이블의 전체 검색 - get Member list -->
+	<select id="getMemberList" resultType="MemberVO">
+		SELECT *
+		FROM MEMBER
+		ORDER BY USERID ASC
+	</select>
+
+</mapper>

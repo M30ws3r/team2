@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>	
+
+	<!-- Alias 설정 : 먼저 mapper에서 확인 후 와서 추가 -->
+	<typeAliases> 
+		<typeAlias alias="MemberVO" type="member.vo.MemberVO" />
+	</typeAliases> 
+	
+	<!-- Sql Mapper 설정 : 여기서 설정하면 스프링에서 설정하면 안됨 -->
+	<mappers>
+		<mapper resource="mappings/member-mapping.xml" />
+	</mappers>
+	
+</configuration>
